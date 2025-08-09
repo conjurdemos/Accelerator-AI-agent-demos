@@ -3,6 +3,7 @@ source ./psql-mcp.env
 
 DEPTH=2
 
+echo $PGSSLROOTCERT
 rm -f $PGSSLROOTCERT
 rm -f 2-self-hosted/nohup.out
 rm -rf 3-claude-desktop/psql-dxt/
