@@ -1,0 +1,18 @@
+[project]
+name = "mcp-server"
+version = "0.1.0"
+description = "MCP servers for testing"
+authors = [
+    {name = "jody.hunt@cyberark.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10,<4.0"
+dependencies = [
+    "fastmcp (>=2.10.4,<3.0.0)",
+    "psycopg2 (>=2.9.10,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

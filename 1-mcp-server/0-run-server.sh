@@ -1,0 +1,14 @@
+#!/bin/bash
+source ../psql-mcp.env
+
+echo "Killing any running server..."
+MCP_PIDS=$(ps -ax | grep mcp-psql.py | grep -v grep | awk '{print $1}')
+if [[ "$MCP_PIDS" != "" ]]; then
+  for pid in $MCP_PIDS; do
+    kill -9 $pid
+  done
+fi
+echo "Updating Python dependencies..."
+poetry update
+echo "Starting MCP PostgreSQL server..."
+poetry run python mcp-psql.py

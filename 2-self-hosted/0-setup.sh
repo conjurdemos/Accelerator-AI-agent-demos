@@ -1,0 +1,39 @@
+#!/bin/bash
+
+main() {
+  install_mcphost
+  install_ollama
+}
+
+install_mcphost() {
+  PATH=$PATH:$(go env GOPATH)/bin
+  if [[ "$(which mcphost)" == "" ]]; then
+    echo "Installing mcphost..."
+    go install github.com/mark3labs/mcphost@latest
+  fi
+}
+
+install_ollama() {
+  if [[ "$(which ollama)" == "" ]]; then
+    echo "Installing ollama..."
+    OS_TYPE=$(uname -s)
+    ARCH_TYPE=$(uname -m)
+    case $OS_TYPE-$ARCH_TYPE in
+        Linux-x86_64 | Linux-aarch64)
+        curl -fsSL https://ollama.com/install.sh | sh
+        ;;
+        Darwin-x86_64 | Darwin-arm64)
+        curl -LO https://ollama.com/download/Ollama-darwin.zip
+        unzip ./Ollama-darwin.zip
+            mv ./Ollama.app /Applications
+            rm ./Ollama-darwin.zip
+        /Applications/Ollama.app/Contents/MacOS/Ollama
+        ;;
+        *)
+        echo "Unknown OS_TYPE-ARCH_TYPE: $OS_TYPE-$ARCH_TYPE"
+        exit -1
+    esac
+  fi
+}
+
+main "$@"
