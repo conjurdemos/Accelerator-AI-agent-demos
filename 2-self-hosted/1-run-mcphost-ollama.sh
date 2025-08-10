@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Start Ollama server
+OLLAMA_PID=$(ps -ax | grep "ollama serve" | grep -v grep | awk '{print $1}')
+if [[ "$OLLAMA_PID" == "" ]]; then
+  nohup ollama serve > ollama.log 2>&1
+fi
+
 if [[ "$1" != "" ]]; then
   MODEL=$1
 else
@@ -7,13 +13,13 @@ else
   MODEL=llama3.2:1b
 fi
 
-nohup ollama serve &
 echo "Downloading model $MODEL..."
 ollama pull $MODEL
 
 echo; echo "See:"
 echo "   https://ollama.com/search"
-echo "for other models you can download with:"
+echo
+echo "Download other models with:"
 echo "   ollama pull <model-name>"
 echo "Larger models tend to work better."
 echo

@@ -15,7 +15,10 @@ install_go() {
       sudo rm /usr/local/bin/go* && sudo ln -s /usr/local/go/bin/* /usr/local/bin
       ;;
     Darwin)
-      echo "Install go on MacOS"
+      if [[ "$(which go)" == "" ]]; then
+        echo "Download and install the Go package for MacOS."
+        open https://golang.org/dl/
+      fi
       ;;
     *)
       echo "Unsupported OS."

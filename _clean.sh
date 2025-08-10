@@ -3,9 +3,10 @@ source ./psql-mcp.env
 
 DEPTH=2
 
-rm -f 	$PGSSLROOTCERT		\
-	1-mcp-server/nohup.out	\
-	2-self-hosted/nohup.out
+rm -f 	$PGSSLROOTCERT			\
+	1-mcp-server/mcp-psql.log	\
+	1-mcp-server/mcp-inspector.log	\
+	2-self-hosted/ollama.log
 rm -rf 3-claude-desktop/psql-dxt/
 
 LOGDIRS=$(find . -maxdepth $DEPTH -type d | grep logs)

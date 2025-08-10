@@ -2,6 +2,7 @@
 source ../psql-mcp.env
 
 # Uncomment lines and set api key values
+# MAKE SURE YOU DO NOT CHECK THEM INTO GITHUB!!
 #export OPENAI_API_KEY=
 #export TAVILY_API_KEY=
 

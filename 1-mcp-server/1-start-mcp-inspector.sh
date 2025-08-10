@@ -12,4 +12,4 @@ if [[ "$INSP_PIDS" != "" ]]; then
   done
 fi
 mkdir -p logs
-npx @modelcontextprotocol/inspector 2>&1 > logs/mcpinspector.log &
+nohup npx @modelcontextprotocol/inspector > mcp-inspector.log 2>&1 &
