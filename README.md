@@ -1,7 +1,6 @@
 # MCP DB Demos
 These demos show various ways agents can connect to a PostgreSQL (Psql) database. It installs a local Psql server for testing. It can also use a proxied connection through CyberArk Secure Infrastructure Access (SIA) if you have one configured. By default it
-uses the local Psql server. All configurations are governed by the main config file:
-- psql-mcp.env
+uses the local Psql server. All configurations are governed by the main config file: **psql-mcp.env**<br>
 You can change defaults and add your CyberArk tenant values for SIA connections.
 <br>
 All the demos work with both the local Psql DB and Psql DBs through CyberArk SIA, determined by the LOCAL_DB boolean variable in psql-mcp.env.
