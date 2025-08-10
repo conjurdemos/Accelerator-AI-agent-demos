@@ -4,6 +4,8 @@ uses the local Psql server. All configurations are governed by the main config f
 - psql-mcp.env
 You can change defaults and add your CyberArk tenant values for SIA connections.
 <br>
+All the demos work with both the local Psql DB and Psql DBs through CyberArk SIA, determined by the LOCAL_DB boolean variable in psql-mcp.env.
+<br>
 The Claude Code and LangGraph demos require Anthropic, OpenAI and Tavily accounts and API keys. Only the Tavily account is free. The other demos do not require accounts or API keys.
 
 ## 0-setup 
@@ -58,4 +60,4 @@ Installs Claude Code and configures it for the MCP Psql server.
 - 1-start-claude-code.sh - just runs claude. It will prompt you for your account info.
 
 ## 5-langgraph
-Runs LangGraph agent that does not use any MCP server to connect to Psql DBs (Requires OpenAI and Tavily accounts with API keys)
+Runs LangGraph agent that uses native LangChain classes (no MCP server) to connect to Psql DBs (Requires OpenAI and Tavily accounts with API keys).
