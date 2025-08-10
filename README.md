@@ -48,7 +48,7 @@ To import the extension into Claude Desktop
   - Click on Extensions in the left menu.
 The extension takes a few seconds to load. The screen will change to show the psql-mcp extension is enabled. It will initially show this error:
 > Permissions
-> Error: Unable to connect to extension server. Please try disabling and re-enabling the extension.
+>> Error: Unable to connect to extension server. Please try disabling and re-enabling the extension.
 Just wait a few more seconds and it should change to show the run_sql_query tool is enabled.
 <br>
 The extension runs its own MCP Psql server connected via stdio. So it will work even
