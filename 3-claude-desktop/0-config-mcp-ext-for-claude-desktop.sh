@@ -1,6 +1,11 @@
 #!/bin/bash
 source ../psql-mcp.env
 
+if [[ "$(uname)" != "Darwin" ]]; then
+  echo "Claude Desktop demo is only supported on MacOS."
+  exit -1
+fi
+
 if [ ! -d psql-dxt ]; then
   echo "Unzipping compressed extension archive..."
   unzip -q psql-mcp.dxt -d psql-dxt

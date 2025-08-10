@@ -10,5 +10,8 @@ if [[ "$MCP_PIDS" != "" ]]; then
 fi
 echo "Updating Python dependencies..."
 poetry update
-echo "Starting MCP PostgreSQL server..."
-poetry run python mcp-psql.py
+echo "Starting MCP PostgreSQL server in background..."
+rm nohup.out
+nohup poetry run python mcp-psql.py &
+sleep 5
+cat nohup.out

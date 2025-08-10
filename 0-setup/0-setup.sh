@@ -9,8 +9,21 @@ main() {
 }
 
 install_dependencies() {
+  if [[ "$(which python)" == "" ]]; then
+    if [[ "$(uname)" == "Darwin" ]]; then
+      brew install python@3.11
+    elif [[ "$(uname)" == "Linux" ]]; then
+      sudo apt update
+      sudo add-apt-repository ppa:deadsnakes/ppa -y
+      sudo apt update
+      sudo apt install -y python3.11
+      sudo apt install -y python3-pip
+      sudo apt install -y pipx
+    fi
+  fi
   if [[ "$(which poetry)" == "" ]]; then
     echo "Installing poetry..."
+    sudo apt install -y python3-poetry
   fi
   if [[ "$(which docker)" == "" ]]; then
     echo "Installing Docker..."
@@ -18,17 +31,8 @@ install_dependencies() {
   fi
   if [[ "$(which node)" == "" ]]; then
     echo "Installing Node.js..."
-    # Download and install nvm:
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-    # in lieu of restarting the shell
-    \. "$HOME/.nvm/nvm.sh"
-    # Download and install Node.js:
-    nvm install 22
-    # Verify the Node.js version:
-    node -v # Should print "v22.18.0".
-    nvm current # Should print "v22.18.0".
-    # Verify npm version:
-    npm -v # Should print "10.9.3".
+    sudo apt install npm
+    npm install -g npx
   fi
 }
 

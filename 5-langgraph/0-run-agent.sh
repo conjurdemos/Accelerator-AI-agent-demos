@@ -1,9 +1,24 @@
 #!/bin/bash
 source ../psql-mcp.env
-# LLM api keys
-export OPENAI_API_KEY=$(keyring get cybrid openaiapi)
-# Tool api keys
-export TAVILY_API_KEY=$(keyring get cybrid tavilyapi)
+
+# Uncomment lines and set api key values
+#export OPENAI_API_KEY=
+#export TAVILY_API_KEY=
+
+ALL_ENV_VARS_SET=true
+if ! test -v OPENAI_API_KEY ; then
+  echo "OPENAI_API_KEY is unset."
+  ALL_ENV_VARS_SET=false
+fi
+if ! test -v TAVILY_API_KEY ; then
+  echo "TAVILY_API_KEY is unset."
+  ALL_ENV_VARS_SET=false
+fi
+if [[ $ALL_ENV_VARS_SET == false ]]; then
+  echo "Set env vars with valid API keys to run demo."
+  exit -1
+fi
+
 echo "Updating python dependencies..."
 poetry update
 echo "Starting LangGraph agent..."

@@ -24,7 +24,8 @@ start_psql() {
     echo "Starting PostgreSQL client..."
     docker run -d   \
           --name psql-client \
-          --entrypoint sleep \
+	  --add-host host.docker.internal:host-gateway \
+	  --entrypoint sleep \
           $PSQL_CLIENT_IMAGE \
           infinity
       echo "PostgreSQL client started."

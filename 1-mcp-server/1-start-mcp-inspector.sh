@@ -1,4 +1,9 @@
 #!/bin/bash
+if [[ "$(uname)" == "Linux" ]]; then
+  echo "MCP Inspector only works on MacOS"
+  exit -1
+fi
+
 echo "Killing any running inspector..."
 INSP_PIDS=$(ps -ax | grep modelcontextprotocol | grep -v grep | awk '{print $1}')
 if [[ "$INSP_PIDS" != "" ]]; then

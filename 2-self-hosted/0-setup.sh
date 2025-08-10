@@ -1,8 +1,26 @@
 #!/bin/bash
 
 main() {
+  install_go
   install_mcphost
   install_ollama
+}
+
+install_go() {
+  case $(uname) in
+    Linux)
+      wget https://go.dev/dl/go1.24.6.linux-amd64.tar.gz
+      sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.24.6.linux-amd64.tar.gz
+      rm go1.24.6.linux-amd64.tar.gz
+      sudo rm /usr/local/bin/go* && sudo ln -s /usr/local/go/bin/* /usr/local/bin
+      ;;
+    Darwin)
+      echo "Install go on MacOS"
+      ;;
+    *)
+      echo "Unsupported OS."
+      exit -1
+  esac
 }
 
 install_mcphost() {
