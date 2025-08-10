@@ -17,20 +17,23 @@ The Claude Code and LangGraph demos require Anthropic, OpenAI and Tavily account
 - _stop-db.sh - Stops and removes DB client & server containers
 - *.sql - SQL scripts for initializing DB
 - _install-docker.sh - Installs Docker engine for Linux
-
+<br>
 The *.sql scripts can also be used to initialize cloud dbs.
+
 ## 1-mcp-server
 Starts/stops MCP server (and MCP Inspector on MacOS)
 - 0-run-server.sh - Starts the MCP Psql Server with http access
   - _stop-server.sh - Kills the MCP server
 - 1-start-mcp-inspector.sh - Starts MCP Inspector on MacOS
   - _stop-inspector - Kills the MCP Inspector
+
 ## 2-self-hosted
 Runs a self-hosted LLM as agent for MCP server
 - 0-setup.sh - Installs Ollama, go and builds mcphost
 - 1-run-mcphost.sh
   - Starts Ollama server, downloads llama3.2:1b model and runs mcphost client using local LLM
   - Connects to MCP Psql server over http using config in: mcphost-mcp-psql.json
+
 ## 3-claude-desktop
 Unpacks a Claude Desktop Extension (MacOs only). Assumes you have Claude Desktop installed. If not, go here: https://claude.ai/download
 - 0-config-mcp-ext-for-claude-desktop.sh
@@ -48,9 +51,11 @@ Just wait a few more seconds and it should change to show the run_sql_query tool
 <br>
 The extension runs its own MCP Psql server connected via stdio. So it will work even
 if the HTTP MCP server is not running. You can start a new conversation (File -> New Conversation) and use natural language to query the database. The model is strikingly good at learning the DB schema and generating complex SQL queries including multi-table joins.
+
 ## 4-claude-code
 Installs Claude Code and configures it for the MCP Psql server.
 - 0-setup.sh - Adds Psql MCP server config to Claude Code (Requires Anthropic/Claude account)
 - 1-start-claude-code.sh - just runs claude. It will prompt you for your account info.
+
 ## 5-langgraph
 Runs LangGraph agent that does not use any MCP server to connect to Psql DBs (Requires OpenAI and Tavily accounts with API keys)
