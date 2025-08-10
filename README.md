@@ -50,7 +50,7 @@ The extension takes a few seconds to load. The screen will change to show the ps
 > Permissions
 >> Error: Unable to connect to extension server. Please try disabling and re-enabling the extension.
 <br>
-Just wait a few more seconds and it should change to show the run_sql_query tool is enabled.
+Just wait a few more seconds and it should change to show the run_sql_query tool is enabled.<br>
 <br>
 The extension runs its own MCP Psql server connected via stdio. So it will work even
 if the HTTP MCP server is not running. You can start a new conversation (File -> New Conversation) and use natural language to query the database. The model is strikingly good at learning the DB schema and generating complex SQL queries including multi-table joins.
