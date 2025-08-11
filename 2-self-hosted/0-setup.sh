@@ -11,11 +11,9 @@ install_go() {
     case $(uname) in
       Linux)
         wget https://go.dev/dl/go1.24.6.linux-amd64.tar.gz
-        sudo rm -rf /usr/local/go \
-	  && sudo tar -C /usr/local -xzf go1.24.6.linux-amd64.tar.gz
+        sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.24.6.linux-amd64.tar.gz
         rm go1.24.6.linux-amd64.tar.gz
-        sudo rm /usr/local/bin/go* \
-	  && sudo ln -s /usr/local/go/bin/* /usr/local/bin
+        sudo rm -f /usr/local/bin/go* && sudo ln -s /usr/local/go/bin/go* /usr/local/bin
         ;;
       Darwin)
 	wget https://go.dev/dl/go1.24.6.darwin-arm64.pkg

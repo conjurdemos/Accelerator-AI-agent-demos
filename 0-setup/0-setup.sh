@@ -3,14 +3,14 @@
 source ../psql-mcp.env
 
 main() {
-  install_dependencies
-  install_psql
-  sleep 5
-  ./start-psql-db.sh
+  install_python
+  install_poetry
+  install_nodejs
+  install_docker
 }
 
-install_dependencies() {
-  if [[ "$(which python)" == "" ]]; then
+install_python() {
+  if [[ "$(which python3)" == "" ]]; then
     case $(uname) in
       Darwin)
 	brew install python@3.11
@@ -29,6 +29,9 @@ install_dependencies() {
 	exit -1
       esac
   fi
+}
+
+install_poetry() {
   if [[ "$(which poetry)" == "" ]]; then
     echo "Installing poetry..."
     case $(uname) in
@@ -44,10 +47,9 @@ install_dependencies() {
 	exit -1
     esac
   fi
-  if [[ "$(which docker)" == "" ]]; then
-    echo "Installing Docker..."
-    ./_install-docker.sh
-  fi
+}
+
+install_nodejs() {
   if [[ "$(which node)" == "" ]]; then
     echo "Installing Node.js..."
     case $(uname) in
@@ -65,16 +67,33 @@ install_dependencies() {
   fi
 }
 
-install_psql() {
-  # see: https://hub.docker.com/_/postgres
-  if [[ "$(docker images | grep postgres)" == "" ]]; then
-    echo "Pulling PostgreSQL Docker image..."
-    docker pull postgres:15
-  fi
-  # see: https://hub.docker.com/r/alpine/psql
-  if [[ "$(docker images | grep alpine/psql)" == "" ]]; then
-    echo "Pulling PostgreSQL client Docker image..."
-    docker pull alpine/psql:17.5
+install_docker() {
+  if [[ "$(which docker)" == "" ]]; then
+    echo "Installing Docker..."
+    case $uname in
+      Darwin)
+	echo "Download Docker Desktop from:"
+	echo "  https://docs.docker.com/get-started/introduction/get-docker-desktop/"
+	echo; echo
+	exit 1
+	;;
+      Linux)
+	# Assumes Linux amd64
+	sudo apt-get remove docker docker-engine docker.io
+	sudo apt-get update
+	sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+	sudo apt-key fingerprint 0EBFCD88
+	sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
+	sudo apt-get update
+	sudo apt-get install -y docker-ce
+	sudo usermod -aG docker $USER
+	newgrp docker
+	;;
+      *)
+	echo "Unsupported OS: $(uname)"
+	exit -1
+    esac
   fi
 }
 

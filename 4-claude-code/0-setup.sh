@@ -3,9 +3,7 @@
 source ../psql-mcp.env
 
 if [[ "$(which claude)" == "" ]]; then
-  sudo su -
-  npm install -g @anthropic-ai/claude-code
-  exit
+  sudo npm install -g @anthropic-ai/claude-code
 fi
 
 <<END_COMMENTS

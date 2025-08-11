@@ -7,11 +7,11 @@ source ../psql-mcp.env
 #export TAVILY_API_KEY=
 
 ALL_ENV_VARS_SET=true
-if ! -v OPENAI_API_KEY ; then
+if [[ "$OPENAI_API_KEY" == "" ]]; then
   echo "OPENAI_API_KEY is unset."
   ALL_ENV_VARS_SET=false
 fi
-if ! -v TAVILY_API_KEY ; then
+if [[ "$TAVILY_API_KEY " == "" ]]; then
   echo "TAVILY_API_KEY is unset."
   ALL_ENV_VARS_SET=false
 fi

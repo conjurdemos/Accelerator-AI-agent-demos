@@ -1,6 +1,6 @@
 #!/bin/bash
 if [[ "$(uname)" == "Linux" ]]; then
-  echo "MCP Inspector only works on MacOS"
+  echo "MCP Inspector only works on MacOS (requires a browser)"
   exit -1
 fi
 

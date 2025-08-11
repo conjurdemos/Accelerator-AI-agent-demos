@@ -2,7 +2,7 @@
 source ../psql-mcp.env
 
 if [[ "$(uname)" != "Darwin" ]]; then
-  echo "Claude Desktop demo is only supported on MacOS."
+  echo "Claude Desktop demo is only supported on MacOS (requires a GUI)."
   exit -1
 fi
 

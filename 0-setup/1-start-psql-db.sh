@@ -3,8 +3,22 @@
 source ../psql-mcp.env
 
 main() {
+  pull_psql_images
   start_psql
   init_db
+}
+
+pull_psql_images() {
+  # see: https://hub.docker.com/_/postgres
+  if [[ "$(docker images | grep postgres)" == "" ]]; then
+    echo "Pulling PostgreSQL Docker image..."
+    docker pull postgres:15
+  fi
+  # see: https://hub.docker.com/r/alpine/psql
+  if [[ "$(docker images | grep alpine/psql)" == "" ]]; then
+    echo "Pulling PostgreSQL client Docker image..."
+    docker pull alpine/psql:17.5
+  fi
 }
 
 start_psql() {
