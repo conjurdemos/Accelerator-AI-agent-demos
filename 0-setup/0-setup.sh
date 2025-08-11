@@ -5,6 +5,7 @@ source ../psql-mcp.env
 main() {
   install_dependencies
   install_psql
+  sleep 5
   ./start-psql-db.sh
 }
 
@@ -53,10 +54,9 @@ install_dependencies() {
       Darwin)
 	wget https://nodejs.org/dist/v22.18.0/node-v22.18.0.pkg
  	sudo installer -pkg ./node-v22.18.0.pkg -target /	
-#	npm install -g npx
+	;;
       Linux)
-	sudo apt install npm
-	npm install -g npx
+	sudo apt install -y npm
 	;;
       *)
 	echo "Unsupported OS: $(uname)"
