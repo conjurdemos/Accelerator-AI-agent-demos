@@ -1,6 +1,8 @@
 #!/bin/bash
 
-if [[ "$(uname)" == "Darwin" ]]; then
+
+case $(uname) in
+  Darwin)
   echo "Download Docker Desktop from:"
   echo "  https://docs.docker.com/get-started/introduction/get-docker-desktop/"
   echo; echo

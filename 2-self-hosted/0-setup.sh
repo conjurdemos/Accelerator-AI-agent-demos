@@ -7,23 +7,28 @@ main() {
 }
 
 install_go() {
-  case $(uname) in
-    Linux)
-      wget https://go.dev/dl/go1.24.6.linux-amd64.tar.gz
-      sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.24.6.linux-amd64.tar.gz
-      rm go1.24.6.linux-amd64.tar.gz
-      sudo rm /usr/local/bin/go* && sudo ln -s /usr/local/go/bin/* /usr/local/bin
-      ;;
-    Darwin)
-      if [[ "$(which go)" == "" ]]; then
-        echo "Download and install the Go package for MacOS."
-        open https://golang.org/dl/
-      fi
-      ;;
-    *)
-      echo "Unsupported OS."
-      exit -1
-  esac
+  if [[ "$(which go)" == "" ]]; then
+    case $(uname) in
+      Linux)
+        wget https://go.dev/dl/go1.24.6.linux-amd64.tar.gz
+        sudo rm -rf /usr/local/go \
+	  && sudo tar -C /usr/local -xzf go1.24.6.linux-amd64.tar.gz
+        rm go1.24.6.linux-amd64.tar.gz
+        sudo rm /usr/local/bin/go* \
+	  && sudo ln -s /usr/local/go/bin/* /usr/local/bin
+        ;;
+      Darwin)
+	wget https://go.dev/dl/go1.24.6.darwin-arm64.pkg
+	sudo installer -pkg ./go1.24.6.darwin-arm64.pkg -target /
+	rm -f go1.24.6.darwin-arm64.pkg
+        sudo rm /usr/local/bin/go* \
+	  && sudo ln -s /usr/local/go/bin/* /usr/local/bin
+	;;
+      *)
+	echo "Unsupported OS: $(uname)"
+	exit -1
+    esac
+  fi
 }
 
 install_mcphost() {

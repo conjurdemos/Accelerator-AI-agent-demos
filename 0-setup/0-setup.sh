@@ -10,20 +10,38 @@ main() {
 
 install_dependencies() {
   if [[ "$(which python)" == "" ]]; then
-    if [[ "$(uname)" == "Darwin" ]]; then
-      brew install python@3.11
-    elif [[ "$(uname)" == "Linux" ]]; then
-      sudo apt update
-      sudo add-apt-repository ppa:deadsnakes/ppa -y
-      sudo apt update
-      sudo apt install -y python3.11
-      sudo apt install -y python3-pip
-      sudo apt install -y pipx
-    fi
+    case $(uname) in
+      Darwin)
+	brew install python@3.11
+	brew install pipx
+	;;
+      Linux)
+	sudo apt update
+	sudo add-apt-repository ppa:deadsnakes/ppa -y
+	sudo apt update
+	sudo apt install -y python3.11
+	sudo apt install -y python3-pip
+	sudo apt install -y pipx
+	;;
+      *)
+	echo "Unsupported OS $(uname)"
+	exit -1
+      esac
   fi
   if [[ "$(which poetry)" == "" ]]; then
     echo "Installing poetry..."
-    sudo apt install -y python3-poetry
+    case $(uname) in
+      Darwin)
+	pipx install poetry
+	pipx ensurepath
+	;;
+      Linux)
+    	sudo apt install -y python3-poetry
+	;;
+      *)
+	echo "Unsupported OS $(uname)"
+	exit -1
+    esac
   fi
   if [[ "$(which docker)" == "" ]]; then
     echo "Installing Docker..."
@@ -31,8 +49,19 @@ install_dependencies() {
   fi
   if [[ "$(which node)" == "" ]]; then
     echo "Installing Node.js..."
-    sudo apt install npm
-    npm install -g npx
+    case $(uname) in
+      Darwin)
+	wget https://nodejs.org/dist/v22.18.0/node-v22.18.0.pkg
+ 	sudo installer -pkg ./node-v22.18.0.pkg -target /	
+#	npm install -g npx
+      Linux)
+	sudo apt install npm
+	npm install -g npx
+	;;
+      *)
+	echo "Unsupported OS: $(uname)"
+	exit -1
+    esac
   fi
 }
 
