@@ -19,8 +19,7 @@ install_go() {
 	wget https://go.dev/dl/go1.24.6.darwin-arm64.pkg
 	sudo installer -pkg ./go1.24.6.darwin-arm64.pkg -target /
 	rm -f go1.24.6.darwin-arm64.pkg
-        sudo rm /usr/local/bin/go* \
-	  && sudo ln -s /usr/local/go/bin/* /usr/local/bin
+        sudo rm -f /usr/local/bin/go* && sudo ln -s /usr/local/go/bin/* /usr/local/bin
 	;;
       *)
 	echo "Unsupported OS: $(uname)"

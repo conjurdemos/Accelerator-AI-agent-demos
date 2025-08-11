@@ -1,7 +1,7 @@
 #!/bin/bash
 source ../psql-mcp.env
 
-# Uncomment lines and set api key values
+# Set api key values in the shell
 # MAKE SURE YOU DO NOT CHECK THEM INTO GITHUB!!
 #export OPENAI_API_KEY=
 #export TAVILY_API_KEY=
@@ -11,7 +11,7 @@ if [[ "$OPENAI_API_KEY" == "" ]]; then
   echo "OPENAI_API_KEY is unset."
   ALL_ENV_VARS_SET=false
 fi
-if [[ "$TAVILY_API_KEY " == "" ]]; then
+if [[ "$TAVILY_API_KEY" == "" ]]; then
   echo "TAVILY_API_KEY is unset."
   ALL_ENV_VARS_SET=false
 fi

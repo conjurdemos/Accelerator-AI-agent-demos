@@ -12,4 +12,13 @@ if [[ "$INSP_PIDS" != "" ]]; then
   done
 fi
 mkdir -p logs
+echo; echo
+echo "Installing and executing mcp-inspector. This may take a bit."
+echo "When started, use these values to connect to the MCP server:"
+echo "   Transport type: Streamable HTTP"
+echo "   URL: http://localhost:$PSQL_MCP_HTTP_PORT/mcp"
+echo "Click the Connect button, then the Tools tab (top middle), then List Tools"
+echo "Click on run_sql_query tool and you can enter SQL queries in the right window."
+echo "   For example: \"select * from pets;\""
+echo; echo
 nohup npx @modelcontextprotocol/inspector > mcp-inspector.log 2>&1 &

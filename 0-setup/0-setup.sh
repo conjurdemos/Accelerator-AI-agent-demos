@@ -4,6 +4,7 @@ source ../psql-mcp.env
 
 main() {
   install_python
+  install_pipx
   install_poetry
   install_nodejs
   install_docker
@@ -14,7 +15,6 @@ install_python() {
     case $(uname) in
       Darwin)
 	brew install python@3.11
-	brew install pipx
 	;;
       Linux)
 	sudo apt update
@@ -22,7 +22,6 @@ install_python() {
 	sudo apt update
 	sudo apt install -y python3.11
 	sudo apt install -y python3-pip
-	sudo apt install -y pipx
 	;;
       *)
 	echo "Unsupported OS $(uname)"
@@ -31,6 +30,23 @@ install_python() {
   fi
 }
 
+install_pipx() {
+  if [[ "$(which pipx)" == "" ]]; then
+    case $(uname) in
+      Darwin)
+        brew install python3-pip
+        brew install pipx
+        ;;
+      Linux)
+        sudo apt install -y python3-pip
+        sudo apt install -y pipx
+        ;;
+      *)
+        echo "Unsupported OS $(uname)"
+        exit -1
+      esac
+  fi
+}
 install_poetry() {
   if [[ "$(which poetry)" == "" ]]; then
     echo "Installing poetry..."
@@ -54,8 +70,10 @@ install_nodejs() {
     echo "Installing Node.js..."
     case $(uname) in
       Darwin)
+	brew install wget
 	wget https://nodejs.org/dist/v22.18.0/node-v22.18.0.pkg
- 	sudo installer -pkg ./node-v22.18.0.pkg -target /	
+ 	sudo installer -pkg ./node-v22.18.0.pkg -target /
+	rm node-v22.18.0.pkg
 	;;
       Linux)
 	sudo apt install -y npm
@@ -70,7 +88,7 @@ install_nodejs() {
 install_docker() {
   if [[ "$(which docker)" == "" ]]; then
     echo "Installing Docker..."
-    case $uname in
+    case $(uname) in
       Darwin)
 	echo "Download Docker Desktop from:"
 	echo "  https://docs.docker.com/get-started/introduction/get-docker-desktop/"

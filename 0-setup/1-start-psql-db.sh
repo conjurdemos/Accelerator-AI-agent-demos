@@ -6,6 +6,7 @@ main() {
   pull_psql_images
   start_psql
   init_db
+  echo "Postgres DB is started, initialized, and demo ready."
 }
 
 pull_psql_images() {
