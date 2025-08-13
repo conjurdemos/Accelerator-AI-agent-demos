@@ -70,7 +70,7 @@ Runs a self-hosted LLM in Ollama as an agent for the MCP server.
 You can try to get the model to generate a multi-table join with the prompt:
 - list all pet info in the db including name, type, birthdate and all owner information for each.
 <br>
-The llama3.2:1b model fails miserably where the hosted Claude Sonnet 4 model in the Claude Desktop demo succeeds impressively.
+The llama3.2:1b model fails miserably to generate multi-table joins where the hosted Claude Sonnet 4 model in the Claude Desktop demo succeeds impressively in discovering the database schema, generating multi-table joins and formatting the output.
 <br>
 You can browse for other Ollama LLMs at: https://ollama.com/search and download models with:<br>
 >ollama pull _model-name_<br>
