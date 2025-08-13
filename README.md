@@ -48,9 +48,9 @@ When started, use these values to connect to the MCP server:<br>
   - Transport type: Streamable HTTP<br>
   - URL: http://localhost:<port>/mcp (displayed on server startup)
 <br>
-Click the Connect button, then the Tools tab (top middle), then List Tools.
-Click on run_sql_query tool and you can enter SQL queries in the right window."
-   For example: \"select * from pets;\"<br>
+Click the Connect button, then the Tools tab (top middle), then List Tools.<br>
+Click on run_sql_query tool and you can enter SQL queries in the right window.
+- For example: "select * from pets;"<br>
 The Inspector is not attached to any LLM so it cannot process natural language prompts.
 
 ## 2-self-hosted
