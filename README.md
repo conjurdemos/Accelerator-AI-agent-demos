@@ -116,5 +116,6 @@ Runs LangGraph process with two agents that use native LangChain classes (no MCP
 - 0-run-agent.sh - installs dependencies and runs lg-psql.py
 - lg-psql.py - the monolithic process that runs two agents, one for the DB, one for the search engine.
 #### Procedure
-- Run: 0-run-agent.sh<br>
+- Run: 0-run-agent.sh
+<br>
 Once the process finishes startup it will present a "User:" prompt. You can enter natural language prompts and the LangGraph orchestrator will decide how to process it. Depending on how the prompt is worded, it may choose to use the Tavily search engine or the SQL agent. Sometimes you have to include a reference to the database to guide it to use the SQL agent.
