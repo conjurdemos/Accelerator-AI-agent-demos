@@ -31,11 +31,6 @@ The local DB is named petclinic and initialized with a simple 3-table schema:
  - type: type
  - owners: first_name, last_name, address, city, telephone
 
-You can try to get the model to generate a multi-table join with the prompt:
-- list all pet info in the db including name, type, birthdate and all owner information for each.
-
-The self-hosted llama3.2:1b model fails miserably where the hosted Claude Sonnet 4 model in the Claude Desktop demo succeeds impressively.
-
 #### Procedure
 - Run: 0-setup.sh
 - Run: 1-start-psql-db.sh
@@ -72,10 +67,15 @@ Runs a self-hosted LLM in Ollama as an agent for the MCP server.
 - Run: 0-setup.sh
 - Run: 1-run-mcphost.sh
 - Enter: natural language prompts. A simple prompt to get started is "list all pets in the db"<br>
-You can browse other Ollama LLM at: https://ollama.com/search and download models with:<br>
+You can try to get the model to generate a multi-table join with the prompt:
+- list all pet info in the db including name, type, birthdate and all owner information for each.
+<br>
+The llama3.2:1b model fails miserably where the hosted Claude Sonnet 4 model in the Claude Desktop demo succeeds impressively.
+<br>
+You can browse for other Ollama LLMs at: https://ollama.com/search and download models with:<br>
 >ollama pull _model-name_<br>
 
-Some models are tuned for specific purposes. Larger models tend to work better in general.
+Some models are tuned for specific purposes, e.g. code generation. Larger models tend to work better in general. At least one model is trained to respond as the character Lt. Worf, the Klingon officer in Star Trek:TNG. Ollama is a great way to evaluate self-hosted LLM capabilities.
 
 ## 3-claude-desktop
 Implements a Claude Desktop Extension (MacOs only). Assumes you have Claude Desktop installed. If not, go here to install it: https://claude.ai/download
