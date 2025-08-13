@@ -27,7 +27,8 @@ The local DB is named petclinic and initialized with a simple 3-table schema:
  - owners: first_name, last_name, address, city, telephone
 
 You can try to get the model to generate a multi-table join with the prompt:
-- list all pet info in the db including name, type, birthdate and all owner information for each.<br>
+- list all pet info in the db including name, type, birthdate and all owner information for each.
+
 The self-hosted llama3.2:1b model fails miserably. The Claude Sonnet 4 model succeeds impressively.
 
 #### Procedure
