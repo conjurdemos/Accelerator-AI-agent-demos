@@ -47,6 +47,7 @@ Installs and executes the mcp-inspector. This may take a little while.
 When started, use these values to connect to the MCP server:<br>
   - Transport type: Streamable HTTP<br>
   - URL: http://localhost:<port>/mcp (displayed on server startup)<br>
+<br>
 Click the Connect button, then the Tools tab (top middle), then List Tools.
 Click on run_sql_query tool and you can enter SQL queries in the right window."
    For example: \"select * from pets;\"<br>
