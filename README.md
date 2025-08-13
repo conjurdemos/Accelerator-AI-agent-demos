@@ -2,7 +2,10 @@
 These demos show various ways agents can connect to a PostgreSQL (Psql) database. It installs a local Psql database server for testing. It can also use a proxied connection through CyberArk Secure Infrastructure Access (SIA) if you have one configured. By default it uses the local Psql server. All configurations are governed by the main config file: **psql-mcp.env**<br>
 You can change defaults and add your CyberArk tenant values for SIA connections.
 <br>
-The database the server connects to is determined by the LOCAL_DB boolean variable in psql-mcp.env. true -> local DB, false -> remote DB using SIA
+The database the server connects to is determined by the LOCAL_DB boolean variable in psql-mcp.env:
+
+- true -> local DB
+- false -> remote DB using SIA
 <br>
 The Claude Code and LangGraph demos require Anthropic, OpenAI and Tavily accounts and API keys. Only the Tavily account is free. The other demos do not require accounts or API keys.
 
@@ -29,7 +32,7 @@ The local DB is named petclinic and initialized with a simple 3-table schema:
 You can try to get the model to generate a multi-table join with the prompt:
 - list all pet info in the db including name, type, birthdate and all owner information for each.
 
-The self-hosted llama3.2:1b model fails miserably. The Claude Sonnet 4 model succeeds impressively.
+The self-hosted llama3.2:1b model fails miserably where the hosted Claude Sonnet 4 model in the Claude Desktop demo succeeds impressively.
 
 #### Procedure
 - Run: 0-setup.sh
