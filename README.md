@@ -63,7 +63,7 @@ Runs a self-hosted LLM in Ollama as an agent for the MCP server.
 #### Procedure
 - Run: 0-setup.sh
 - Run: 1-run-mcphost.sh
-- Enter: natural language prompts. A simple prompt to get started is "list all pets in the db"
+- Enter: natural language prompts. A simple prompt to get started is "list all pets in the db"<br>
 You can browse other Ollama LLM at: https://ollama.com/search and download models with:<br>
 >ollama pull _model-name_<br>
 
