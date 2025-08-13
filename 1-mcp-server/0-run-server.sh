@@ -1,5 +1,11 @@
 #!/bin/bash
 source ../psql-mcp.env
+if [[ "$ALL_GOOD" == "false" ]]; then
+  echo; echo
+  echo "Please fix above issue and retry."
+  echo; echo
+  exit -1
+fi
 
 echo "Killing any running server..."
 MCP_PIDS=$(ps -ax | grep mcp-psql.py | grep -v grep | awk '{print $1}')
