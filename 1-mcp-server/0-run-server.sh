@@ -14,5 +14,5 @@ echo "Starting MCP PostgreSQL server in background..."
 rm -f mcp-psql.log
 nohup poetry run python mcp-psql.py > mcp-psql.log 2>&1 &
 echo "Waiting for server to startup..."
-sleep 10
+sleep 15
 cat mcp-psql.log

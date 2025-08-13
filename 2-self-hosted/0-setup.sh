@@ -43,15 +43,15 @@ install_ollama() {
     ARCH_TYPE=$(uname -m)
     case $OS_TYPE-$ARCH_TYPE in
         Linux-x86_64 | Linux-aarch64)
-        curl -fsSL https://ollama.com/install.sh | sh
-        ;;
+          curl -fsSL https://ollama.com/install.sh | sh
+          ;;
         Darwin-x86_64 | Darwin-arm64)
-        curl -LO https://ollama.com/download/Ollama-darwin.zip
-        unzip ./Ollama-darwin.zip
-            mv ./Ollama.app /Applications
-            rm ./Ollama-darwin.zip
-        /Applications/Ollama.app/Contents/MacOS/Ollama
-        ;;
+          curl -LO https://ollama.com/download/Ollama-darwin.zip
+          unzip ./Ollama-darwin.zip
+          sudo mv ./Ollama.app /Applications
+          rm ./Ollama-darwin.zip
+          /Applications/Ollama.app/Contents/MacOS/Ollama
+          ;;
         *)
         echo "Unknown OS_TYPE-ARCH_TYPE: $OS_TYPE-$ARCH_TYPE"
         exit -1

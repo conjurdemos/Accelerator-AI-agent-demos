@@ -42,7 +42,9 @@ class DatabaseConnector:
 
     def connect(self):
         print(f"Connecting to database at {HOST}:{PORT}")
+        print(f"Connecting as user {USER} to DB {DATABASE}")
         logging.debug(f"Connecting to database at {HOST}:{PORT}")
+        logging.debug(f"Connecting as user {USER} to DB {DATABASE}")
         try:
             self.connection = psycopg2.connect(**config)
             self.cursor = self.connection.cursor()
