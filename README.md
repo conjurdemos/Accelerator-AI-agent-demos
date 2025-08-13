@@ -66,6 +66,7 @@ Runs a self-hosted LLM in Ollama as an agent for the MCP server.
 - Enter: natural language prompts. A simple prompt to get started is "list all pets in the db"
 You can browse other Ollama LLM at: https://ollama.com/search and download models with:<br>
 >ollama pull _model-name_<br>
+
 Some models are tuned for specific purposes. Larger models tend to work better in general.
 
 ## 3-claude-desktop
