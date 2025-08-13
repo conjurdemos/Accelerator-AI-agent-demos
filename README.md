@@ -7,7 +7,9 @@ The database the server connects to is determined by the LOCAL_DB boolean variab
 - true -> local DB
 - false -> remote DB using SIA
 <br>
-The Claude Code and LangGraph demos require Anthropic, OpenAI and Tavily accounts and API keys. Only the Tavily account is free. The other demos do not require accounts or API keys.
+The Claude Code demo requires an Anthropic subscription.<br>
+The LangGraph demo requires OpenAI and Tavily accounts and API keys. Only the Tavily account is free.<br>
+The other demos do not require accounts or API keys.
 
 ## 0-setup
 Start here to install common demo dependencies and start a local Psql DB server.
