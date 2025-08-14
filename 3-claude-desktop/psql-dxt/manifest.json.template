@@ -1,0 +1,21 @@
+{
+  "dxt_version": "0.1",
+  "name": "psql-mcp",
+  "version": "1.0.0",
+  "description": "A simple PostgreSQL MCP extension",
+  "author": {
+    "name": "Jody Hunt - CyberArk"
+  },
+  "icon": "icon.png",
+  "server": {
+    "type": "python",
+    "entry_point": "bash",
+    "mcp_config": {
+      "command": "bash",
+      "args": [
+        "-c",
+        "cd {{DEMO_HOME}}/3-claude-desktop; ./_run-server.sh"
+      ]
+    }
+  }
+}
