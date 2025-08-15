@@ -3,26 +3,31 @@
 source ../psql-mcp.env
 
 main() {
-  pull_psql_images
-  start_psql
+  pull_psqldb_image
+  start_psql_db
   init_db
   echo "Postgres DB is started, initialized, and demo ready."
 }
 
-pull_psql_images() {
+pull_psqldb_image() {
   # see: https://hub.docker.com/_/postgres
   if [[ "$(docker images | grep postgres)" == "" ]]; then
     echo "Pulling PostgreSQL Docker image..."
-    docker pull postgres:15
-  fi
-  # see: https://hub.docker.com/r/alpine/psql
-  if [[ "$(docker images | grep alpine/psql)" == "" ]]; then
-    echo "Pulling PostgreSQL client Docker image..."
-    docker pull alpine/psql:17.5
+    case $(uname) in
+      Darwin)
+        docker pull postgres:15
+        ;;
+      Linux)
+        docker pull postgres:15-bullseye
+        ;;
+      *)
+        echo "Unsupported OS: $(uname)"
+        exit -1
+    esac
   fi
 }
 
-start_psql() {
+start_psql_db() {
   if [[ "$(docker ps | grep psql-db)" == "" ]]; then
     echo "Starting PostgreSQL DB..."
     docker run -d   \
@@ -34,20 +39,6 @@ start_psql() {
   else
     echo "PostgreSQL DB is already running."
   fi
-
-  if [[ "$(docker ps | grep psql-client)" == "" ]]; then
-    echo "Starting PostgreSQL client..."
-    docker run -d   \
-          --name psql-client \
-	  --add-host host.docker.internal:host-gateway \
-	  --entrypoint sleep \
-          $PSQL_CLIENT_IMAGE \
-          infinity
-      echo "PostgreSQL client started."
-  else
-    echo "PostgreSQL client is already running."
-  fi
-
   sleep 3
 }
 
@@ -63,22 +54,22 @@ init_db() {
 EOF
   echo "Initializing petclinic database..."
   cat db_create_petclinic.sql \
-    | docker exec -i psql-client psql "host=host.docker.internal \
-                                      user=postgres              \
-                                      password=$DB_ADMIN_PASSWORD"
+    | psql "host=$DB_HOST \
+            user=postgres              \
+            password=$DB_ADMIN_PASSWORD"
 
   cat db_load_petclinic.sql \
-    | docker exec -i psql-client psql "host=host.docker.internal  \
-                                      user=postgres           \
-                                      password=$DB_ADMIN_PASSWORD \
-                                      dbname=petclinic"
+    | psql "host=$DB_HOST   \
+            user=postgres           \
+            password=$DB_ADMIN_PASSWORD \
+            dbname=$DB_DATABASE"
   cat db_create_user.sql \
     | sed -e "s/{{DB_USERNAME}}/$DB_USERNAME/g" \
           -e "s/{{DB_PASSWORD}}/$DB_PASSWORD/g" \
-    | docker exec -i psql-client psql "host=host.docker.internal \
-                                      user=postgres              \
-                                      password=$DB_ADMIN_PASSWORD \
-                                      dbname=petclinic"
+    | psql "host=$DB_HOST \
+            user=postgres              \
+            password=$DB_ADMIN_PASSWORD \
+            dbname=$DB_DATABASE"
 }
 
 main "$@"

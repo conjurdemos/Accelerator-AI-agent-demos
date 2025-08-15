@@ -12,31 +12,31 @@ The LangGraph demo requires OpenAI and Tavily accounts and API keys. Only the Ta
 The other demos do not require accounts or API keys.
 
 ## 0-setup
-Start here to install common demo dependencies and start a local Psql DB server.
+Scripts to install common demo dependencies and start a local Psql DB server.
 #### Directory contents
 - 0-setup.sh - Installs common system dependencies
+    - psql CLI
     - poetry package manager
     - Docker engine (not desktop)
-    - Pulls Psql server & client Docker images
-    - Install Node.js
-    - Starts & initializes local PostgreSQL DB
-- 1-start-psql-db.sh - Starts & initializes local PostgreSQL DB
-- _stop-db.sh - Stops and removes DB client & server containers
+    - Pulls Psql server Docker image
+    - Node.js
+- 1-start-local-db.sh - Starts and initializes local petclinic DB
+- _stop-db.sh - Stops and removes server container
 - db_*.sql - SQL scripts for initializing the local DB
 <br>
 You can use the psql CLI and the *.sql scripts to initialize cloud dbs.<br>
 The local DB is named petclinic and initialized with a simple 3-table schema:
 
  - pets: name, birth_date
- - type: type
+ - type: type (dog, cat, bird, ...)
  - owners: first_name, last_name, address, city, telephone
 
 #### Procedure
 - Run: 0-setup.sh
-- Run: 1-start-psql-db.sh
+- Run: 1-start-local-db.sh
 
 ## 1-mcp-server
-Starts/stops MCP HTTP (remote) server (and MCP Inspector on MacOS)
+Scripts to start/stop MCP HTTP (remote) server (and MCP Inspector on MacOS)
 Once the MCP server and DB are started you can run any of the other demos.
 #### Directory contents
 - 0-run-server.sh - Starts the MCP Psql Server with http access

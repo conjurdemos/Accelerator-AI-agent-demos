@@ -4,6 +4,7 @@ from pathlib import Path
 from fastmcp import FastMCP
 from typing import List, Dict, Any
 import psycopg2
+import subprocess
 
 # Setup logging to new/overwritten logfile with loglevel
 Path("./logs").mkdir(parents=True, exist_ok=True)
@@ -53,6 +54,13 @@ class DatabaseConnector:
             logging.error(f"Error connecting to the database: {e}")
             sys.exit(-1)
 
+    def execute_command(self, command: str) -> str:
+        res = subprocess.run(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        if res.returncode != 0:
+            print(f"Error executing command: {res.stderr.decode(sys.stderr.encoding)}")
+            return "Command execution failed."
+        return res.stdout.decode(sys.stdout.encoding)
+
     def execute_query(self, query: str) -> List[Dict[str, Any]]:
         self.connect()
         self.cursor.execute(query)
@@ -66,6 +74,17 @@ class DatabaseConnector:
 
 mcp = FastMCP("DatabaseTools")
 db_connector = DatabaseConnector(config)
+
+@mcp.tool()
+def run_db_command(command: str) -> str:
+    """Execute a psql database command and return results"""
+    cmd_str = f"psql -h {HOST} -U {USER} -w -d {DATABASE} -c \"{command}\""
+    try:
+        print(f"Executing command: {cmd_str}")
+        return db_connector.execute_command(cmd_str)
+    except Exception as e:
+        print(f"Error executing command: {e}")
+        return {"error": str(e)}
 
 @mcp.tool()
 def run_sql_query(query: str) -> List[Dict[str, Any]]:

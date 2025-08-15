@@ -1,5 +1,7 @@
 #!/bin/bash
 
+MODEL_DEFAULT=gpt-oss:20b
+
 # Start Ollama server
 OLLAMA_PID=$(ps -ax | grep "ollama serve" | grep -v grep | awk '{print $1}')
 if [[ "$OLLAMA_PID" == "" ]]; then
@@ -9,8 +11,8 @@ fi
 if [[ "$1" != "" ]]; then
   MODEL=$1
 else
-  echo "No model name provided on command line, using default llama3.2:1b."
-  MODEL=llama3.2:1b
+  echo "No model name provided on command line, using default $MODEL_DEFAULT."
+  MODEL=$MODEL_DEFAULT
 fi
 
 echo "Downloading model $MODEL..."
