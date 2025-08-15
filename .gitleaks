@@ -1,0 +1,22 @@
+[
+ {
+  "Description": "Identified a HashiCorp Terraform password field, risking unauthorized infrastructure configuration and security breaches.",
+  "StartLine": 16,
+  "EndLine": 17,
+  "StartColumn": 14,
+  "EndColumn": 1,
+  "Match": "PASSWORD=\"5up3r5ecretPa55w0rd\"",
+  "Secret": "\"5up3r5ecretPa55w0rd\"",
+  "File": "psql-mcp.env",
+  "SymlinkFile": "",
+  "Commit": "f16b67f8045a05497ad4f1d88542fca87f237ad2",
+  "Entropy": 3.5944657,
+  "Author": "Jody Hunt",
+  "Email": "Jody.Hunt@NG-JODY-H.local",
+  "Date": "2025-08-09T18:57:14Z",
+  "Message": "initial",
+  "Tags": [],
+  "RuleID": "hashicorp-tf-password",
+  "Fingerprint": "f16b67f8045a05497ad4f1d88542fca87f237ad2:psql-mcp.env:hashicorp-tf-password:16"
+ }
+]

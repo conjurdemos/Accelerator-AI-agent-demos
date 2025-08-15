@@ -1,15 +1,16 @@
-# MCP DB Demos
+<img alt="CyberArk Banner" src="images/cyberark-banner.jpg">
+# AI Agent Demos
 These demos show various ways agents can connect to a PostgreSQL (Psql) database. It installs a local Psql database server for testing. It can also use a proxied connection through CyberArk Secure Infrastructure Access (SIA) if you have one configured. By default it uses the local Psql server. All configurations are governed by the main config file: **psql-mcp.env**<br>
-You can change defaults and add your CyberArk tenant values for SIA connections.
+You can edit that file to change defaults and add your CyberArk tenant values for SIA connections.
 <br>
 The database the server connects to is determined by the LOCAL_DB boolean variable in psql-mcp.env:
 
 - true -> local DB
-- false -> remote DB using SIA
+- false -> remote DB using SIA configuration
 <br>
 The Claude Code demo requires an Anthropic subscription.<br>
-The LangGraph demo requires OpenAI and Tavily accounts and API keys. Only the Tavily account is free.<br>
-The other demos do not require accounts or API keys.
+The LangGraph demo requires OpenAI and Tavily accounts and API keys. The Tavily account is free.<br>
+The other demos do not require accounts or API keys, however Claude Desktop free accounts have token limits that reset after a few hours.
 
 ## 0-setup
 Scripts to install common demo dependencies and start a local Psql DB server.
