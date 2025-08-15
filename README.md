@@ -1,4 +1,5 @@
 <img alt="CyberArk Banner" src="images/cyberark-banner.jpg">
+
 # AI Agent Demos
 These demos show various ways agents can connect to a PostgreSQL (Psql) database. It installs a local Psql database server for testing. It can also use a proxied connection through CyberArk Secure Infrastructure Access (SIA) if you have one configured. By default it uses the local Psql server. All configurations are governed by the main config file: **psql-mcp.env**<br>
 You can edit that file to change defaults and add your CyberArk tenant values for SIA connections.
