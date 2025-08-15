@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MODEL_DEFAULT=gpt-oss:20b
+MODEL_DEFAULT=llama3.2:1b
 
 # Start Ollama server
 OLLAMA_PID=$(ps -ax | grep "ollama serve" | grep -v grep | awk '{print $1}')
