@@ -3,12 +3,22 @@
 source ../psql-mcp.env
 
 main() {
+  install_homebrew
   install_psql
   install_python
   install_pipx
   install_poetry
   install_nodejs
   install_docker
+}
+
+install_homebrew() {
+  if [[ "$(which brew)" != "" ]]; then
+    echo "Homebrew is already installed: $(brew -v)"
+    return
+  fi
+  echo "Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 }
 
 install_psql() {
