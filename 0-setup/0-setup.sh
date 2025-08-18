@@ -13,12 +13,13 @@ main() {
 }
 
 install_homebrew() {
-  if [[ "$(which brew)" != "" ]]; then
+  if [[ "$(uname)" == "Darwin" && "$(which brew)" != "" ]]; then
     echo "Homebrew is already installed: $(brew -v)"
     return
+  else
+    echo "Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
-  echo "Installing Homebrew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 }
 
 install_psql() {
