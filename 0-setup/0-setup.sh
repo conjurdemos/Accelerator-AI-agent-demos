@@ -19,6 +19,13 @@ install_homebrew() {
   else
     echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    if [[ "$(which brew)" == "" ]]; then
+      echo; echo
+      echo "Homebrew installation failed. Your Mac may not be configured for development."
+      echo "Contact your IT administrator for assistance."
+      echo; echo
+      exit 1
+    fi
   fi
 }
 
