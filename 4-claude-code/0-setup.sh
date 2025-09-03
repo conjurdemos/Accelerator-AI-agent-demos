@@ -22,4 +22,4 @@ END_COMMENTS
 claude mcp add 	--scope local		\
 		--transport http	\
 		psql-api		\
-		http://127.0.0.1:$PSQL_MCP_HTTP_PORT/mcp/
+		http://127.0.0.1:$MCP_HTTP_PORT/mcp/
