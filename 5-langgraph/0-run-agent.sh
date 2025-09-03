@@ -1,7 +1,7 @@
 #!/bin/bash
 source ../psql-mcp.env
 
-# Set api key values in the shell
+# Don't set api key values here - set as env vars in the shell
 # MAKE SURE YOU DO NOT CHECK THEM INTO GITHUB!!
 #export OPENAI_API_KEY=
 #export TAVILY_API_KEY=

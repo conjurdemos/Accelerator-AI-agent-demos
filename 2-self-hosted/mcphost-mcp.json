@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "mcpsql": {
+      "type": "remote",
+      "url": "http://localhost:8040/mcp"
+    }
+  }
+}

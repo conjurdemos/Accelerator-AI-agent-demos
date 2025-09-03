@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "psql": {
-      "type": "remote",
-      "url": "${env://PSQL_URL:-http://localhost:8040/mcp}"
-    }
-  }
-}

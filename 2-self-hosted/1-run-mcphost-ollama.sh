@@ -32,5 +32,5 @@ echo "Using the $MODEL LLM."
 echo; echo
 
 PATH=$PATH:$(go env GOPATH)/bin
-mcphost -m ollama:$MODEL --config mcphost-mcp-psql.json
+mcphost -m ollama:$MODEL --config mcphost-mcp.json
 ollama stop $MODEL

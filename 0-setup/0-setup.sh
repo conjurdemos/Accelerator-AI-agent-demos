@@ -4,6 +4,7 @@ source ../psql-mcp.env
 
 main() {
   install_homebrew
+  install_wget
   install_psql
   install_python
   install_pipx
@@ -16,17 +17,36 @@ install_homebrew() {
   if [[ "$(uname)" == "Darwin" && "$(which brew)" != "" ]]; then
     echo "Homebrew is already installed: $(brew -v)"
     return
-  else
-    echo "Installing Homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    if [[ "$(which brew)" == "" ]]; then
-      echo; echo
-      echo "Homebrew installation failed. Your Mac may not be configured for development."
-      echo "Contact your IT administrator for assistance."
-      echo; echo
-      exit 1
-    fi
   fi
+  echo "Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  if [[ "$(which brew)" == "" ]]; then
+    echo; echo
+    echo "Homebrew installation failed. Your Mac may not be configured for development."
+    echo "Contact your IT administrator for assistance."
+    echo; echo
+    exit 1
+  fi
+}
+
+install_wget() {
+  if [[ "$(which wget)" != "" ]]; then
+    echo "wget is already installed: $(wget --version | head -1)"
+    return
+  fi
+  echo "Installing wget..."
+  case $(uname) in
+    Darwin)
+      brew install wget
+      ;;
+    Linux)
+      sudo apt update
+      sudo apt install -y wget
+      ;;
+    *)
+      echo "Unsupported OS $(uname)"
+      exit -1
+  esac
 }
 
 install_psql() {

@@ -1,17 +1,22 @@
 <img alt="CyberArk Banner" src="images/cyberark-banner.jpg">
 
 # AI Agent Demos
-These demos show various ways agents can connect to a PostgreSQL (Psql) database. It installs a local Psql database server for testing. It can also use a proxied connection through CyberArk Secure Infrastructure Access (SIA) if you have one configured. By default it uses the local Psql server. All configurations are governed by the main config file: **psql-mcp.env**<br>
+These demos show various ways of connecting to databases from Python. It installs a local Psql database server for testing. It can also use a proxied connection through CyberArk Secure Infrastructure Access (SIA) if you have one configured. By default it uses the local Psql server. All configurations are governed by the main config files
+for each database:
+- **psql-mcp.env** - PostgreSQL (local & remote)
+- **mssql-mcp.env** - Microsoft SQLServer (remote only)
+- **orcl-mcp.env** - Oracle (not currently working)
+<br>
 You can edit that file to change defaults and add your CyberArk tenant values for SIA connections.
 <br>
-The database the server connects to is determined by the LOCAL_DB boolean variable in psql-mcp.env:
+For PostgreSQL databases, the MCP server will connect to either a local or remote DB server as determined by the LOCAL_DB boolean variable in psql-mcp.env:
 
 - true -> local DB
 - false -> remote DB using SIA configuration
 <br>
 The Claude Code demo requires an Anthropic subscription.<br>
-The LangGraph demo requires OpenAI and Tavily accounts and API keys. The Tavily account is free.<br>
-The other demos do not require accounts or API keys, however Claude Desktop free accounts have token limits that reset after a few hours.
+The LangGraph demo does not use any MCP server and connects directly to a local or remote PostgreSQL database. It requires OpenAI and Tavily accounts and API keys. The Tavily account is free.<br>
+The other demos do not require accounts or API keys, however Claude Desktop free accounts have token limits that once reached will reset after a few hours.
 
 ## 0-setup
 Scripts to install common demo dependencies and start a local Psql DB server.
@@ -38,10 +43,12 @@ The local DB is named petclinic and initialized with a simple 3-table schema:
 - Run: 1-start-local-db.sh
 
 ## 1-mcp-server
-Scripts to start/stop MCP HTTP (remote) server (and MCP Inspector on MacOS)
-Once the MCP server and DB are started you can run any of the other demos.
+Scripts to start/stop MCP HTTP (remote) server (and MCP Inspector on MacOS)<br>
+Once the MCP server and DB are started you can run any of the other demos. The only local DB implemented is the PostgreSQL DB in Docker.<br>
+The MCP server exposes one tool named *run_sql_query* which is database independent. It works with the local PostgreSQL DB or Postgres and SQLServer DBs through SIA.
+<br>
 #### Directory contents
-- 0-run-server.sh - Starts the MCP Psql Server with http access
+- 0-run-server.sh - Starts the MCP Server with http access
   - _stop-server.sh - Kills the MCP server
 - 1-start-mcp-inspector.sh - Starts MCP Inspector on MacOS
   - _stop-inspector - Kills the MCP Inspector
@@ -64,7 +71,7 @@ Runs a self-hosted LLM in Ollama as an agent for the MCP server.
 - 0-setup.sh - Installs Ollama, go and builds mcphost
 - 1-run-mcphost.sh
   - Starts Ollama server, downloads llama3.2:1b model and runs mcphost client using local LLM
-  - Connects to MCP Psql server over http using config in: mcphost-mcp-psql.json
+  - Connects to MCP server over http using config in: mcphost-mcp-psql.json
 #### Procedure
 - Run: 0-setup.sh
 - Run: 1-run-mcphost.sh
@@ -80,12 +87,13 @@ You can browse for other Ollama LLMs at: https://ollama.com/search and download 
 Some models are tuned for specific purposes, e.g. code generation. Larger models tend to work better in general. At least one model is trained to respond as the character Lt. Worf, the Klingon officer in Star Trek:TNG. Ollama is a great way to evaluate self-hosted LLM capabilities.
 
 ## 3-claude-desktop
-Implements a Claude Desktop Extension (MacOs only). Assumes you have Claude Desktop installed. If not, go here to install it: https://claude.ai/download
+Implements a Claude Desktop Extension (MacOs and PostgreSQL support only).<br>
+Assumes you have Claude Desktop installed. If not, go here to install it: https://claude.ai/download
 #### Directory contents
 - 0-config-mcp-ext-for-claude-desktop.sh
   - Modifies psql-dxt/manifest.json to run _run-server.sh
 - _run-server.sh - installs dependencies and runs mcp-psql.py with stdio connection
-- mcp-psql.py - the MCP Psql server
+- mcp-psql.py - the local MCP Psql server
 - psql-dxt - directory containing manifest template and icon image for the extension
 - pyproject.toml - Python dependency manifest
 #### Procedure
@@ -101,12 +109,12 @@ The extension takes a few seconds to load. The screen will change to show the ps
 <br>
 Just wait and it should change to show the run_sql_query tool is enabled.<br>
 <br>
-Once the extension is loaded you don't need to load it again unless you move or rename something it references (see manifest.json and _run-server.sh). The extension runs its own MCP Psql server connected via stdio. So it will start even if the HTTP MCP server is not running. You can start a new conversation (File -> New Conversation) and use natural language to query the database. The model is strikingly good at learning the DB schema and generating complex SQL queries including multi-table joins.
+Once the extension is loaded you don't need to load it again unless you move or rename something that it references (see manifest.json and _run-server.sh). The extension runs its own MCP Psql server connected via stdio. So it will start even if the HTTP MCP server is not running. You can start a new conversation (File -> New Conversation) and use natural language to query the database. The model is strikingly good at learning the DB schema and generating complex SQL queries including multi-table joins.
 
 ## 4-claude-code
-Installs Claude Code and configures it for the MCP Psql server.
+Installs Claude Code and configures it for the PostgreSQL MCP server.
 #### Directory contents
-- 0-setup.sh - Adds Psql MCP server config to Claude Code (Requires Anthropic/Claude account)
+- 0-setup.sh - Adds MCP server config to Claude Code (Requires Anthropic/Claude account)
 - 1-start-claude-code.sh - just runs claude. It will prompt you for your account info.
 #### Procedure
 - Run: 0-setup.sh

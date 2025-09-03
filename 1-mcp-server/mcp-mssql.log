@@ -1,0 +1,209 @@
+
+
+╭─ FastMCP 2.0 ──────────────────────────────────────────────────────────────╮
+│                                                                            │
+│        _ __ ___ ______           __  __  _____________    ____    ____     │
+│       _ __ ___ / ____/___ ______/ /_/  |/  / ____/ __ \  |___ \  / __ \    │
+│      _ __ ___ / /_  / __ `/ ___/ __/ /|_/ / /   / /_/ /  ___/ / / / / /    │
+│     _ __ ___ / __/ / /_/ (__  ) /_/ /  / / /___/ ____/  /  __/_/ /_/ /     │
+│    _ __ ___ /_/    \__,_/____/\__/_/  /_/\____/_/      /_____(_)____/      │
+│                                                                            │
+│                                                                            │
+│                                                                            │
+│    🖥️  Server name:     DatabaseTools                                       │
+│    📦 Transport:       Streamable-HTTP                                     │
+│    🔗 Server URL:      http://127.0.0.1:8040/mcp                           │
+│                                                                            │
+│    📚 Docs:            https://gofastmcp.com                               │
+│    🚀 Deploy:          https://fastmcp.cloud                               │
+│                                                                            │
+│    🏎️  FastMCP version: 2.11.3                                              │
+│    🤝 MCP version:     1.13.1                                              │
+│                                                                            │
+╰────────────────────────────────────────────────────────────────────────────╯
+
+
+[08/28/25 07:59:01] INFO     Starting MCP server 'DatabaseTools'  server.py:1522
+                             with transport 'http' on                           
+                             http://127.0.0.1:8040/mcp                          
+INFO:     Started server process [11670]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8040 (Press CTRL+C to quit)
+Connecting as user jody.hunt@cyberark.cloud.38637#tigr-ai@localuser@jody-sqlserver-db.cupbnldn7eg9.ca-central-1.rds.amazonaws.com to db server at tigr-ai.mssql.cyberark.cloud
+INFO:     127.0.0.1:63213 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63213 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63213 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63215 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63215 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63217 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63220 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63221 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63215 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63223 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63294 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63294 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63294 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63296 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63296 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63298 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63301 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63296 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63302 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63313 - "POST /mcp HTTP/1.1" 200 OK
+Executing query: SELECT 1
+Connecting as user jody.hunt@cyberark.cloud.38637#tigr-ai@localuser@jody-sqlserver-db.cupbnldn7eg9.ca-central-1.rds.amazonaws.com to db server at tigr-ai.mssql.cyberark.cloud
+INFO:     127.0.0.1:63327 - "POST /mcp HTTP/1.1" 200 OK
+Executing query: SELECT current_database();
+Connecting as user jody.hunt@cyberark.cloud.38637#tigr-ai@localuser@jody-sqlserver-db.cupbnldn7eg9.ca-central-1.rds.amazonaws.com to db server at tigr-ai.mssql.cyberark.cloud
+Error executing query: (195, b"'current_database' is not a recognized built-in function name.DB-Lib error message 20018, severity 15:\nGeneral SQL Server error: Check messages from the SQL Server\n")
+INFO:     127.0.0.1:63327 - "POST /mcp HTTP/1.1" 200 OK
+Executing query: SELECT DB_NAME();
+Connecting as user jody.hunt@cyberark.cloud.38637#tigr-ai@localuser@jody-sqlserver-db.cupbnldn7eg9.ca-central-1.rds.amazonaws.com to db server at tigr-ai.mssql.cyberark.cloud
+INFO:     127.0.0.1:63327 - "POST /mcp HTTP/1.1" 200 OK
+Executing query: SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE';
+Connecting as user jody.hunt@cyberark.cloud.38637#tigr-ai@localuser@jody-sqlserver-db.cupbnldn7eg9.ca-central-1.rds.amazonaws.com to db server at tigr-ai.mssql.cyberark.cloud
+INFO:     127.0.0.1:63327 - "POST /mcp HTTP/1.1" 200 OK
+Executing query: SELECT TABLE_NAME, COLUMN_NAME, DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS ORDER BY TABLE_NAME, ORDINAL_POSITION;
+Connecting as user jody.hunt@cyberark.cloud.38637#tigr-ai@localuser@jody-sqlserver-db.cupbnldn7eg9.ca-central-1.rds.amazonaws.com to db server at tigr-ai.mssql.cyberark.cloud
+INFO:     127.0.0.1:49753 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49753 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:49753 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49754 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49754 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49757 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:49755 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49756 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49754 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49771 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:51878 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51877 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51878 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:51878 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51877 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:51879 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51877 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51880 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51879 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:51879 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51881 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51882 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51883 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51880 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:51880 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51884 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51885 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51886 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58955 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58954 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58955 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:58954 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:58955 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58956 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58954 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58957 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58956 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58958 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58960 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:58959 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58956 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58957 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:58962 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58957 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58963 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58964 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58973 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:62606 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62605 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62606 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:62606 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62605 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:62607 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62605 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62608 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62607 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62609 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62611 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:62610 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62607 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62608 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:62613 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62614 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62615 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62608 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62627 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63977 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63976 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63977 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63976 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63977 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63979 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63976 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63980 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63979 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63981 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63982 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63983 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63979 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63980 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:63984 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63980 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63985 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63986 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65249 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65249 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:65321 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65322 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65321 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:65322 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:65321 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65323 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65322 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65324 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65323 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:65323 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65325 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65326 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65327 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65324 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65328 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65329 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:65330 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65324 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65412 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65413 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65412 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:65413 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:65412 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65414 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65413 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65415 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65414 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:65416 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65417 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65414 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65418 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65415 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:65419 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65420 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65415 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65421 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50278 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50277 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50278 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:50277 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:50278 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50279 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50277 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50280 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50279 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50281 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50282 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:50283 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50279 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50280 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:50284 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50285 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50286 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50280 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50294 - "POST /mcp HTTP/1.1" 202 Accepted
